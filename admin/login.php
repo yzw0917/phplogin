@@ -11,6 +11,7 @@ if ($input->get('do') == 'check') {
     $row = $mysqli_result->fetch_array(MYSQLI_ASSOC);//转为数组
     if (is_array($row)) {
         $_SESSION['id'] = $row['id'];
+        $_SESSION['auser'] = $row['auser'];
         header("location:home.php");
     } else {
         die("账号或密码错误");

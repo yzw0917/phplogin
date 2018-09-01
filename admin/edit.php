@@ -1,56 +1,60 @@
+<?php
+include ('check.php');
+echo "ÂΩìÂâçÁôªÂΩïÂè∑Á†ÅÔºö {$_SESSION['id']} \n";
+echo "ÂΩìÂâçÁôªÂΩïÊìç‰ΩúÂëòÔºö{$_SESSION['auser']} \n";
+?>
 <html>
 <head>
-    <meta charset="gb2312">
-    <title>—ß…˙–≈œ¢π‹¿Ì</title>
+       <title>‰øÆÊîπ</title>
 
 </head>
 <body>
 <center>
     <?php
     include_once"menu.php";
-    //1.¡¨Ω” ˝æ›ø‚
+    //1.ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ›øÔøΩ
     try{
         $pdo = new PDO("mysql:host=localhost;dbname=test;","root","root");
     }catch(PDOException $e){
-        die(" ˝æ›ø‚¡¨Ω” ß∞‹".$e->getMessage());
+        die("ÔøΩÔøΩÔøΩ›øÔøΩÔøΩÔøΩÔøΩÔøΩ ßÔøΩÔøΩ".$e->getMessage());
     }
-    //2.∑¿÷π÷–Œƒ¬“¬Î
-    $pdo->query("SET NAMES 'UTF-8'");
-    //3.∆¥Ω”sql”Ôæ‰£¨»°≥ˆ–≈œ¢
+    //2.ÔøΩÔøΩ÷πÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+    $pdo->query("SET NAMES 'UTF8'");
+    //3.∆¥ÔøΩÔøΩsqlÔøΩÔøΩ‰£¨»°ÔøΩÔøΩÔøΩÔøΩœ¢
     $sql = "SELECT * FROM stu WHERE id =".$_GET['id'];
-    $stmt = $pdo->query($sql);//∑µªÿ‘§¥¶¿Ì∂‘œÛ
+    $stmt = $pdo->query($sql);//ÔøΩÔøΩÔøΩÔøΩ‘§ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
     if($stmt->rowCount()>0){
-        $stu = $stmt->fetch(PDO::FETCH_ASSOC);//∞¥’’πÿ¡™ ˝◊ÈΩ¯––Ω‚Œˆ
+        $stu = $stmt->fetch(PDO::FETCH_ASSOC);//ÔøΩÔøΩÔøΩ’πÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ–ΩÔøΩÔøΩÔøΩ
     }else{
-        die("√ª”–“™–ﬁ∏ƒµƒ ˝æ›£°");
+        die("√ªÔøΩÔøΩ“™ÔøΩﬁ∏ƒµÔøΩÔøΩÔøΩÔøΩ›£ÔøΩ");
     }
     ?>
     <form id="addstu" name="editstu" method="post" action="action.php?action=edit">
         <input type="hidden" name="id" id="id" value="<?php echo $stu['id'];?>"/>
         <table>
             <tr>
-                <td>–’√˚</td>
+                <td>ÂßìÂêç</td>
                 <td><input id="name" name="name" type="text" value="<?php echo $stu['name']?>"/></td>
 
             </tr>
             <tr>
-                <td>–‘±</td>
-                <td><input type="radio" name="sex" value="m" <?php echo ($stu['sex']=="m")? "checked" : ""?>/>&nbsp;ƒ–
-                    <input type="radio" name="sex" value="w"  <?php echo ($stu['sex']=="w")? "checked" : ""?>/>&nbsp;≈Æ
+                <td>ÊÄßÂà´</td>
+                <td><input type="radio" name="sex" value="m" <?php echo ($stu['sex']=="m")? "checked" : ""?>/>&nbsp;Áî∑
+                    <input type="radio" name="sex" value="w"  <?php echo ($stu['sex']=="w")? "checked" : ""?>/>&nbsp;Â•≥
                 </td>
             </tr>
             <tr>
-                <td>ƒÍ¡‰</td>
+                <td>Âπ¥ÈæÑ</td>
                 <td><input type="text" name="age" id="age" value="<?php echo $stu['age']?>"/></td>
             </tr>
             <tr>
-                <td>∞‡º∂</td>
+                <td>Áè≠Á∫ß</td>
                 <td><input id="classid" name="classid" type="text" value="<?php echo $stu['classid']?>"/></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="submit" value="–ﬁ∏ƒ"/>&nbsp;&nbsp;
-                    <input type="reset" value="÷ÿ÷√"/>
+                <td><input type="submit" value="Êèê‰∫§"/>&nbsp;&nbsp;
+                    <input type="reset" value="Ê∏ÖÈô§"/>
                 </td>
             </tr>
         </table>

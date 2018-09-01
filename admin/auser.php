@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spongebob
- * Date: 2017/11/2
- * Time: 下午6:18
- */
+
 include('check.php');
 
 $id = $input->get('id');
@@ -43,7 +38,7 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 <head>
     <title>管理员管理</title>
     <meta charset=utf-8>
-    <?php //include (PATH . 'header.inc.php')?>
+    <?php include ('../header.inc.php')?>
     <link rel="stylesheet" href="../themes/bootstrap/css/bootstrap.css">
     <script src="../themes/jquery-3.2.1.min.js"></script>
     <script src="../themes/bootstrap/js/bootstrap.js"></script>

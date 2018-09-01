@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spongebob
- * Date: 2017/11/2
- * Time: 下午3:28
- */
 session_start();
 include ('../config.php');
 

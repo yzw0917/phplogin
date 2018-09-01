@@ -1,7 +1,11 @@
 ﻿<!DOCTYPE html>
+<?php
+include ('check.php');
+echo "当前ID： {$_SESSION['id']} <br>";
+echo "当前登录操作员：{$_SESSION['auser']} <br>";
+?>
 <head>
-      <meta charset="utf-8">
-      <title>学生信息 管理</title>
+    <title>学生信息 管理</title>
     <script>
         function doDel(id) {
             if (confirm("确定要删除么？")) {
@@ -12,10 +16,12 @@
 </head>
 <body>
 <center>
+     
     <?php
-    include_once 'menu.php';
-    ?>
-    <h3>浏览学生信息</h3>
+        include_once("menu.php");
+           ?>
+        
+      <h3>浏览学生信息</h3>
     <table width="600" border="1">
         <tr>
             <th>ID</th>
@@ -33,7 +39,7 @@
             die("数据库连接失败" . $e->getMessage());
         }
         //2.解决中文乱码问题
-        $pdo->query("SET NAMES 'UTF-8'");
+        $pdo->query("SET NAMES 'utf8'");
         //3.执行sql语句，并实现解析和遍历
         $sql = "SELECT * FROM stu ";
         foreach ($pdo->query($sql) as $row) {
@@ -53,6 +59,29 @@
         ?>
 
     </table>
+
+
+   <?php
+// 检测访问者的ip，内网无法显示
+   print "您的IP地址是：";
+
+
+   if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+       $cip = $_SERVER["HTTP_CLIENT_IP"];
+   }
+   elseif(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
+       $cip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+   }
+   elseif(!empty($_SERVER["REMOTE_ADDR"])){
+       $cip = $_SERVER["REMOTE_ADDR"];
+   }
+   else{
+       $cip = "无法获取！";
+   }
+   print $cip;
+
+   ?>
+
 </center>
 
 </body>

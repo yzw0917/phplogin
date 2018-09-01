@@ -1,43 +1,43 @@
 <?php
-//1.Á¬½ÓÊı¾İ¿â
+//1.è¿æ¥æ•°æ®åº“
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=test;", "root", "root");
 
 } catch (PDOException $e) {
-    die("Êı¾İ¿âÁ¬½ÓÊ§°Ü" . $e->getMessage());
+    die("æ•°æ®åº“è¿æ¥å¤±è´¥" . $e->getMessage());
 }
-//2.·ÀÖ¹ÖĞÎÄÂÒÂë
-$pdo->query("SET NAMES 'UTF-8'");
-//3.Í¨¹ıactionµÄÖµ½øĞĞ¶ÔÓ¦²Ù×÷
+//2.é˜²æ­¢ä¸­æ–‡ä¹±ç 
+$pdo->query("SET NAMES 'UTF8'");
+//3.é€šè¿‡actionçš„å€¼è¿›è¡Œå¯¹åº”æ“ä½œ
  switch ($_GET['action'])  {
-    case 'add':{   //Ôö¼Ó²Ù×÷
+    case 'add':{   //å¢åŠ æ“ä½œ
         $name = $_POST['name'];
         $sex = $_POST['sex'];
         $age = $_POST['age'];
         $classid = $_POST['classid'];
 
-        //Ğ´sqlÓï¾ä
+        //å†™sqlè¯­å¥
         $sql = "INSERT INTO stu VALUES (NULL ,'{$name}','{$sex}','{$age}','{$classid}')";
         $rw = $pdo->exec($sql);
         if ($rw > 0) {
-            echo "<script> alert('Ôö¼Ó³É¹¦');
-                            window.location='index.php'; //Ìø×ªµ½Ê×Ò³
+            echo "<script> alert('å¢åŠ æˆåŠŸï¼ï¼ï¼ï¼');
+                            window.location='index.php'; //è·³è½¬åˆ°é¦–é¡µ
                  </script>";
         } else {
-            echo "<script> alert('Ôö¼ÓÊ§°Ü');
-                            window.history.back(); //·µ»ØÉÏÒ»Ò³
+            echo "<script> alert('å¢åŠ å¤±è´¥');
+                            window.history.back(); //è¿”å›ä¸Šä¸€é¡µ
                  </script>";
         }
         break;
     }
-    case "del": {    //1.»ñÈ¡±íµ¥ĞÅÏ¢
+    case "del": {    //1.è·å–è¡¨å•ä¿¡æ¯
         $id = $_GET['id'];
         $sql = "DELETE FROM stu WHERE id={$id}";
         $pdo->exec($sql);
-        header("Location:index.php");//Ìø×ªµ½Ê×Ò³
+        header("Location:index.php");//è·³è½¬åˆ°é¦–é¡µ
         break;
     }
-    case "edit" :{   //1.»ñÈ¡±íµ¥ĞÅÏ¢
+    case "edit" :{   //1.è·å–è¡¨å•ä¿¡æ¯
         $id = $_POST['id'];
         $name = $_POST['name'];
         $sex = $_POST['sex'];
@@ -47,9 +47,9 @@ $pdo->query("SET NAMES 'UTF-8'");
         $sql = "UPDATE stu SET name='{$name}',sex='{$sex}',age='{$age}',classid='{$classid}' WHERE id='{$id}'";
         $rw=$pdo->exec($sql);
         if($rw>0){
-            echo "<script>alert('ĞŞ¸Ä³É¹¦');window.location='index.php'</script>";
+            echo "<script>alert('ä¿®æ”¹æˆåŠŸï¼ï¼ï¼ï¼ï¼');window.location='index.php'</script>";
         }else{
-            echo "<script>alert('ĞŞ¸ÄÊ§°Ü');window.history.back()</script>";
+            echo "<script>alert('ä¿®æ”¹å¤±è´¥');window.history.back()</script>";
         }
 
 

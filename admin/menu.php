@@ -1,3 +1,3 @@
-<h2>ังษ๚ะลฯขนÜภํ</h2>
- <a href="index.php">ไฏภภังษ๚</a>
-<a href="add.php">ิ๖ผำังษ๚</a>
+๏ปฟ<h2>ๅ…จ้จ</h2>
+<a href="index.php">ๆต่ง</a>
+<a href="add.php">ๅขๅ </a>
